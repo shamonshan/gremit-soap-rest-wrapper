@@ -25,8 +25,6 @@ const https = require("https");
   
 const args = { name: 'value' }
 
-
-const request = require('request');
 const fs = require('fs');
 
 const xmls= `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://sb.com.ua/webservices/">
