@@ -1,0 +1,2239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://sb.com.ua/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://sb.com.ua/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;input type="hidden" name="WS_VERSION" id="WS_VERSION" value="SWI22.1.01.01" /&gt;</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://sb.com.ua/webservices/">
+      <s:element name="CalcComission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestValues">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SystemId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LoginType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PointCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserLogin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserHashedPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Args" type="tns:ArrayOfField" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EncryptedData" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Field" nillable="true" type="tns:Field" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Field">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CalcComissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalcComissionResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransfer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransferResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FindRecordsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FoundRecords" type="tns:ArrayOfArrayOfField" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultTruncated" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EncryptedData" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArrayOfField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfField" nillable="true" type="tns:ArrayOfField" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendRequestResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendConfirm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendConfirmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendConfirmResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendCancelResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEdit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendEditResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayoutRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayoutRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayoutRequestResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayoutConfirm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayoutConfirmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayoutConfirmResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayoutCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayoutCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayoutCancelResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnRequestResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnConfirm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnConfirmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnConfirmResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnCancelResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindClientResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmOperation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmOperationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmOperationResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityByCountry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityByCountryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityByCountryResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrencies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrenciesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrenciesResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentTypeList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentTypeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentTypeListResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCountriesResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeliveryOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeliveryOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeliveryOptionsResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDirections">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDirectionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDirectionsResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatesResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFeatures">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFeaturesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFeaturesResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoints">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPointsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPointsResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPointTree">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPointTreeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPointTreeResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OWExecOperation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OWExecOperationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OWExecOperationResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFormatInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFormatInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormatInfoResult" type="tns:FormatInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FormatInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DecimalSeparator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateTimePattern" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMethodInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="systemId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="method" type="tns:SWWSMethod" />
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SWWSMethod">
+        <s:restriction base="s:string">
+          <s:enumeration value="HelloWorld" />
+          <s:enumeration value="GetTransfer" />
+          <s:enumeration value="GetTransferState" />
+          <s:enumeration value="CalcComission" />
+          <s:enumeration value="SendRequest" />
+          <s:enumeration value="SendConfirm" />
+          <s:enumeration value="SendCancel" />
+          <s:enumeration value="SendEdit" />
+          <s:enumeration value="SendEditCancel" />
+          <s:enumeration value="SendEditConfirm" />
+          <s:enumeration value="CancelRequest" />
+          <s:enumeration value="CancelReject" />
+          <s:enumeration value="CancelConfirm" />
+          <s:enumeration value="ReturnRequest" />
+          <s:enumeration value="ReturnConfirm" />
+          <s:enumeration value="ReturnCancel" />
+          <s:enumeration value="PayoutRequest" />
+          <s:enumeration value="PayoutConfirm" />
+          <s:enumeration value="PayoutCancel" />
+          <s:enumeration value="GetCityByCountry" />
+          <s:enumeration value="GetCurrencies" />
+          <s:enumeration value="GetDocumentTypeList" />
+          <s:enumeration value="GetCountries" />
+          <s:enumeration value="GetDeliveryOptions" />
+          <s:enumeration value="GetFeatures" />
+          <s:enumeration value="GetDirections" />
+          <s:enumeration value="GetStates" />
+          <s:enumeration value="GetPoints" />
+          <s:enumeration value="GetPointTree" />
+          <s:enumeration value="GetUsersOfPoint" />
+          <s:enumeration value="AddUser" />
+          <s:enumeration value="UpdateUser" />
+          <s:enumeration value="ChangePassword" />
+          <s:enumeration value="GetOfflineTaskList" />
+          <s:enumeration value="GetOfflineReport" />
+          <s:enumeration value="CancelOfflineReport" />
+          <s:enumeration value="TransactionDetailReport" />
+          <s:enumeration value="ExecOperation" />
+          <s:enumeration value="DirectSaveRegistration" />
+          <s:enumeration value="GetReceiverRegistrationInfo" />
+          <s:enumeration value="GetCRNByNames" />
+          <s:enumeration value="GetClientTransfers" />
+          <s:enumeration value="SaveRewards" />
+          <s:enumeration value="BlackListCancel" />
+          <s:enumeration value="BlackListConfirm" />
+          <s:enumeration value="Block" />
+          <s:enumeration value="Unblock" />
+          <s:enumeration value="ReturnBlocked" />
+          <s:enumeration value="ReturnWithFeeRequest" />
+          <s:enumeration value="CheckCash2Card" />
+          <s:enumeration value="ForcePayout" />
+          <s:enumeration value="GetUserLoyaltyInfo" />
+          <s:enumeration value="LoyaltyLoginUser" />
+          <s:enumeration value="LoyaltyGetActionCondition" />
+          <s:enumeration value="LoyaltyGetLoyaOperation" />
+          <s:enumeration value="LoyaltyGetLoyaOutOperation" />
+          <s:enumeration value="LoyaltyGetLoyaTemplate" />
+          <s:enumeration value="LoyaltyCreateLoyaOutOperation" />
+          <s:enumeration value="LoyaltyRegisterUser" />
+          <s:enumeration value="LoyaltyUpdateUser" />
+          <s:enumeration value="LoyaltyChangePassword" />
+          <s:enumeration value="LoyaltyJoinUser" />
+          <s:enumeration value="LoyaltyLostPassword" />
+          <s:enumeration value="GetPanEligibilityForm" />
+          <s:enumeration value="GetCardInfo" />
+          <s:enumeration value="RegisterDeviceRequest" />
+          <s:enumeration value="RegisterDeviceConfirm" />
+          <s:enumeration value="AuthenticateRequest" />
+          <s:enumeration value="SendNotice" />
+          <s:enumeration value="GetNotices" />
+          <s:enumeration value="GetPointsForBankDeposit" />
+          <s:enumeration value="AddPoint" />
+          <s:enumeration value="DecryptTicketFromUrl" />
+          <s:enumeration value="GetPayoutCurrencies" />
+          <s:enumeration value="GetPurposes" />
+          <s:enumeration value="TransactionABSDetailReport" />
+          <s:enumeration value="TransferAutoCancel" />
+          <s:enumeration value="CheckAndRegister4Limit" />
+          <s:enumeration value="UndoRegistration4Limit" />
+          <s:enumeration value="GetExternalSystems" />
+          <s:enumeration value="GetExternalPoints" />
+          <s:enumeration value="GetRestOfLimit" />
+          <s:enumeration value="CheckClientForBlackList" />
+          <s:enumeration value="ProfixReport" />
+          <s:enumeration value="Login" />
+          <s:enumeration value="FindClient" />
+          <s:enumeration value="ClearingReport" />
+          <s:enumeration value="GetRates" />
+          <s:enumeration value="ConfirmOperation" />
+          <s:enumeration value="OWExecOperation" />
+          <s:enumeration value="E9XReport" />
+          <s:enumeration value="RejectTransfer" />
+          <s:enumeration value="F1XReport" />
+          <s:enumeration value="AddPointSW" />
+          <s:enumeration value="GetPointTreeSW" />
+          <s:enumeration value="GetUsersOfPointSW" />
+          <s:enumeration value="GetUserById" />
+          <s:enumeration value="UnlinkUser" />
+          <s:enumeration value="GetPhoneCodes" />
+          <s:enumeration value="SWReportingInfo" />
+          <s:enumeration value="SWReportingTransactions" />
+          <s:enumeration value="GenerateReport" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetMethodInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMethodInfoResult" type="tns:MethodInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MethodInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestFields" type="tns:ArrayOfFieldInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseFields" type="tns:ArrayOfFieldInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFieldInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FieldInfo" nillable="true" type="tns:FieldInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FieldInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caption" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:FieldType" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxLength" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enumerated" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnumeratedValues" type="tns:ArrayOfEnumeratedValuesInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRequired" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mask" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Example" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Group" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Order" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefaultValue" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FieldType">
+        <s:restriction base="s:string">
+          <s:enumeration value="String" />
+          <s:enumeration value="Integer" />
+          <s:enumeration value="CurrencyAmount" />
+          <s:enumeration value="DateTime" />
+          <s:enumeration value="Boolean" />
+          <s:enumeration value="CountryCode" />
+          <s:enumeration value="CurrencyCode" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfEnumeratedValuesInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EnumeratedValuesInfo" nillable="true" type="tns:EnumeratedValuesInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnumeratedValuesInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EnumeratedValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnumeratedLabel" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExecOperation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="method" type="tns:SWWSMethod" />
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecOperationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecOperationResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersOfPoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersOfPointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersOfPointResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUserResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePasswordResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddPointSW">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPointSWResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddPointSWResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPointTreeSW">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPointTreeSWResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPointTreeSWResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersOfPointSW">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersOfPointSWResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersOfPointSWResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByIdResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnlinkUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnlinkUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnlinkUserResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SWReportingInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SWReportingInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SWReportingInfoResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SWReportingTransactions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SWReportingTransactionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SWReportingTransactionsResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateReportResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOfflineTaskList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOfflineTaskListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOfflineTaskListResult" type="tns:FindRecordsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOfflineReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOfflineReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOfflineReportResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelOfflineReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelOfflineReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelOfflineReportResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransactionDetailReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransactionDetailReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionDetailReportResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProfixReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:RequestValues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProfixReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfixReportResult" type="tns:ArrayOfField" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CalcComissionSoapIn">
+    <wsdl:part name="parameters" element="tns:CalcComission" />
+  </wsdl:message>
+  <wsdl:message name="CalcComissionSoapOut">
+    <wsdl:part name="parameters" element="tns:CalcComissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTransferSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransfer" />
+  </wsdl:message>
+  <wsdl:message name="GetTransferSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:SendRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:SendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendConfirmSoapIn">
+    <wsdl:part name="parameters" element="tns:SendConfirm" />
+  </wsdl:message>
+  <wsdl:message name="SendConfirmSoapOut">
+    <wsdl:part name="parameters" element="tns:SendConfirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:SendCancel" />
+  </wsdl:message>
+  <wsdl:message name="SendCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:SendCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEditSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEdit" />
+  </wsdl:message>
+  <wsdl:message name="SendEditSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayoutRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:PayoutRequest" />
+  </wsdl:message>
+  <wsdl:message name="PayoutRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:PayoutRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayoutConfirmSoapIn">
+    <wsdl:part name="parameters" element="tns:PayoutConfirm" />
+  </wsdl:message>
+  <wsdl:message name="PayoutConfirmSoapOut">
+    <wsdl:part name="parameters" element="tns:PayoutConfirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayoutCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:PayoutCancel" />
+  </wsdl:message>
+  <wsdl:message name="PayoutCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:PayoutCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReturnRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnConfirmSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnConfirm" />
+  </wsdl:message>
+  <wsdl:message name="ReturnConfirmSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnConfirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnCancel" />
+  </wsdl:message>
+  <wsdl:message name="ReturnCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindClientSoapIn">
+    <wsdl:part name="parameters" element="tns:FindClient" />
+  </wsdl:message>
+  <wsdl:message name="FindClientSoapOut">
+    <wsdl:part name="parameters" element="tns:FindClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmOperationSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmOperation" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmOperationSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmOperationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCityByCountrySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCityByCountry" />
+  </wsdl:message>
+  <wsdl:message name="GetCityByCountrySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCityByCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrenciesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrencies" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrenciesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentTypeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentTypeList" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentTypeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCountriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCountries" />
+  </wsdl:message>
+  <wsdl:message name="GetCountriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliveryOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeliveryOptions" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliveryOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeliveryOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDirectionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDirections" />
+  </wsdl:message>
+  <wsdl:message name="GetDirectionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDirectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStates" />
+  </wsdl:message>
+  <wsdl:message name="GetStatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFeaturesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFeatures" />
+  </wsdl:message>
+  <wsdl:message name="GetFeaturesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFeaturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPointsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPoints" />
+  </wsdl:message>
+  <wsdl:message name="GetPointsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPointsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPointTreeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPointTree" />
+  </wsdl:message>
+  <wsdl:message name="GetPointTreeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPointTreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="OWExecOperationSoapIn">
+    <wsdl:part name="parameters" element="tns:OWExecOperation" />
+  </wsdl:message>
+  <wsdl:message name="OWExecOperationSoapOut">
+    <wsdl:part name="parameters" element="tns:OWExecOperationResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormatInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFormatInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFormatInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormatInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMethodInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMethodInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetMethodInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMethodInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecOperationSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecOperation" />
+  </wsdl:message>
+  <wsdl:message name="ExecOperationSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecOperationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersOfPointSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsersOfPoint" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersOfPointSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersOfPointResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddPointSWSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPointSW" />
+  </wsdl:message>
+  <wsdl:message name="AddPointSWSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPointSWResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPointTreeSWSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPointTreeSW" />
+  </wsdl:message>
+  <wsdl:message name="GetPointTreeSWSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPointTreeSWResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersOfPointSWSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsersOfPointSW" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersOfPointSWSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersOfPointSWResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserById" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnlinkUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UnlinkUser" />
+  </wsdl:message>
+  <wsdl:message name="UnlinkUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UnlinkUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SWReportingInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SWReportingInfo" />
+  </wsdl:message>
+  <wsdl:message name="SWReportingInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SWReportingInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SWReportingTransactionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SWReportingTransactions" />
+  </wsdl:message>
+  <wsdl:message name="SWReportingTransactionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SWReportingTransactionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateReport" />
+  </wsdl:message>
+  <wsdl:message name="GenerateReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOfflineTaskListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOfflineTaskList" />
+  </wsdl:message>
+  <wsdl:message name="GetOfflineTaskListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOfflineTaskListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOfflineReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOfflineReport" />
+  </wsdl:message>
+  <wsdl:message name="GetOfflineReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOfflineReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelOfflineReportSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelOfflineReport" />
+  </wsdl:message>
+  <wsdl:message name="CancelOfflineReportSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelOfflineReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDetailReportSoapIn">
+    <wsdl:part name="parameters" element="tns:TransactionDetailReport" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDetailReportSoapOut">
+    <wsdl:part name="parameters" element="tns:TransactionDetailReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProfixReportSoapIn">
+    <wsdl:part name="parameters" element="tns:ProfixReport" />
+  </wsdl:message>
+  <wsdl:message name="ProfixReportSoapOut">
+    <wsdl:part name="parameters" element="tns:ProfixReportResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SWWSSoap">
+    <wsdl:operation name="CalcComission">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Расчет комиссии по переводу.</wsdl:documentation>
+      <wsdl:input message="tns:CalcComissionSoapIn" />
+      <wsdl:output message="tns:CalcComissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransfer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение данных перевода по идентификатору.</wsdl:documentation>
+      <wsdl:input message="tns:GetTransferSoapIn" />
+      <wsdl:output message="tns:GetTransferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Запрос на отправку перевода.</wsdl:documentation>
+      <wsdl:input message="tns:SendRequestSoapIn" />
+      <wsdl:output message="tns:SendRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirm">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Подтверждение отправки перевода.</wsdl:documentation>
+      <wsdl:input message="tns:SendConfirmSoapIn" />
+      <wsdl:output message="tns:SendConfirmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCancel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Отмена отправки перевода.</wsdl:documentation>
+      <wsdl:input message="tns:SendCancelSoapIn" />
+      <wsdl:output message="tns:SendCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEdit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Редактирование параметров отправленного перевода.</wsdl:documentation>
+      <wsdl:input message="tns:SendEditSoapIn" />
+      <wsdl:output message="tns:SendEditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayoutRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Запрос на выплату перевода.</wsdl:documentation>
+      <wsdl:input message="tns:PayoutRequestSoapIn" />
+      <wsdl:output message="tns:PayoutRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayoutConfirm">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Подтверждение выплаты перевода.</wsdl:documentation>
+      <wsdl:input message="tns:PayoutConfirmSoapIn" />
+      <wsdl:output message="tns:PayoutConfirmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayoutCancel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Отмена выплаты перевода.</wsdl:documentation>
+      <wsdl:input message="tns:PayoutCancelSoapIn" />
+      <wsdl:output message="tns:PayoutCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Запрос на возврат перевода.</wsdl:documentation>
+      <wsdl:input message="tns:ReturnRequestSoapIn" />
+      <wsdl:output message="tns:ReturnRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnConfirm">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Подтверждение возврата перевода.</wsdl:documentation>
+      <wsdl:input message="tns:ReturnConfirmSoapIn" />
+      <wsdl:output message="tns:ReturnConfirmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnCancel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Отмена возврата перевода.</wsdl:documentation>
+      <wsdl:input message="tns:ReturnCancelSoapIn" />
+      <wsdl:output message="tns:ReturnCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindClient">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Поиск клиента.</wsdl:documentation>
+      <wsdl:input message="tns:FindClientSoapIn" />
+      <wsdl:output message="tns:FindClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmOperation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Подтверждение операции над переводом</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmOperationSoapIn" />
+      <wsdl:output message="tns:ConfirmOperationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByCountry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка городов по ISO-коду страны</wsdl:documentation>
+      <wsdl:input message="tns:GetCityByCountrySoapIn" />
+      <wsdl:output message="tns:GetCityByCountrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencies">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка валют</wsdl:documentation>
+      <wsdl:input message="tns:GetCurrenciesSoapIn" />
+      <wsdl:output message="tns:GetCurrenciesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentTypeList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка типов документов</wsdl:documentation>
+      <wsdl:input message="tns:GetDocumentTypeListSoapIn" />
+      <wsdl:output message="tns:GetDocumentTypeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка стран</wsdl:documentation>
+      <wsdl:input message="tns:GetCountriesSoapIn" />
+      <wsdl:output message="tns:GetCountriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryOptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка условий отправки или выплаты</wsdl:documentation>
+      <wsdl:input message="tns:GetDeliveryOptionsSoapIn" />
+      <wsdl:output message="tns:GetDeliveryOptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDirections">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка направлений переводов</wsdl:documentation>
+      <wsdl:input message="tns:GetDirectionsSoapIn" />
+      <wsdl:output message="tns:GetDirectionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка штатов </wsdl:documentation>
+      <wsdl:input message="tns:GetStatesSoapIn" />
+      <wsdl:output message="tns:GetStatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFeatures">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение особенностей отправки и выплаты переводов</wsdl:documentation>
+      <wsdl:input message="tns:GetFeaturesSoapIn" />
+      <wsdl:output message="tns:GetFeaturesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPoints">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка точек по коду страны и названию города</wsdl:documentation>
+      <wsdl:input message="tns:GetPointsSoapIn" />
+      <wsdl:output message="tns:GetPointsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPointTree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение иерархии точек подчиненных своей</wsdl:documentation>
+      <wsdl:input message="tns:GetPointTreeSoapIn" />
+      <wsdl:output message="tns:GetPointTreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OWExecOperation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Вызов API OpenWay по протоколу mBilling</wsdl:documentation>
+      <wsdl:input message="tns:OWExecOperationSoapIn" />
+      <wsdl:output message="tns:OWExecOperationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormatInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Вспомогательный метод, возвращающий параметры форматирования значений сумм, дат и т.п.</wsdl:documentation>
+      <wsdl:input message="tns:GetFormatInfoSoapIn" />
+      <wsdl:output message="tns:GetFormatInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMethodInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Вспомогательный метод, возвращающий информацию о входных и выходных параметрах прочих методов сервиса в разрезе систем.</wsdl:documentation>
+      <wsdl:input message="tns:GetMethodInfoSoapIn" />
+      <wsdl:output message="tns:GetMethodInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecOperation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Вызов динамических методов вебсервиса</wsdl:documentation>
+      <wsdl:input message="tns:ExecOperationSoapIn" />
+      <wsdl:output message="tns:ExecOperationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOfPoint">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка пользователей точки</wsdl:documentation>
+      <wsdl:input message="tns:GetUsersOfPointSoapIn" />
+      <wsdl:output message="tns:GetUsersOfPointSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Добавление нового пользователя</wsdl:documentation>
+      <wsdl:input message="tns:AddUserSoapIn" />
+      <wsdl:output message="tns:AddUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Редактирование пользователя</wsdl:documentation>
+      <wsdl:input message="tns:UpdateUserSoapIn" />
+      <wsdl:output message="tns:UpdateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Смена пароля текущего пользователя</wsdl:documentation>
+      <wsdl:input message="tns:ChangePasswordSoapIn" />
+      <wsdl:output message="tns:ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPointSW">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Добавление новой точки Единого Окна</wsdl:documentation>
+      <wsdl:input message="tns:AddPointSWSoapIn" />
+      <wsdl:output message="tns:AddPointSWSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPointTreeSW">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение иерархии точек Единого Окна</wsdl:documentation>
+      <wsdl:input message="tns:GetPointTreeSWSoapIn" />
+      <wsdl:output message="tns:GetPointTreeSWSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOfPointSW">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка пользователей Единого Окна</wsdl:documentation>
+      <wsdl:input message="tns:GetUsersOfPointSWSoapIn" />
+      <wsdl:output message="tns:GetUsersOfPointSWSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение информации о пользователе Единого Окна</wsdl:documentation>
+      <wsdl:input message="tns:GetUserByIdSoapIn" />
+      <wsdl:output message="tns:GetUserByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlinkUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Отвязка пользователя Единого Окна от системы</wsdl:documentation>
+      <wsdl:input message="tns:UnlinkUserSoapIn" />
+      <wsdl:output message="tns:UnlinkUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SWReportingInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Данные, необходимые для отчёта просмотра переводов</wsdl:documentation>
+      <wsdl:input message="tns:SWReportingInfoSoapIn" />
+      <wsdl:output message="tns:SWReportingInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SWReportingTransactions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Отчёт по транзакциям переводов</wsdl:documentation>
+      <wsdl:input message="tns:SWReportingTransactionsSoapIn" />
+      <wsdl:output message="tns:SWReportingTransactionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Dashboard отчёт</wsdl:documentation>
+      <wsdl:input message="tns:GenerateReportSoapIn" />
+      <wsdl:output message="tns:GenerateReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Логин</wsdl:documentation>
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOfflineTaskList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение списка заданий на оффлайн генерацию отчетов</wsdl:documentation>
+      <wsdl:input message="tns:GetOfflineTaskListSoapIn" />
+      <wsdl:output message="tns:GetOfflineTaskListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOfflineReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Получение сгенерированного оффлайн отчета</wsdl:documentation>
+      <wsdl:input message="tns:GetOfflineReportSoapIn" />
+      <wsdl:output message="tns:GetOfflineReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelOfflineReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Отмена задания на оффлайн генерацию отчета</wsdl:documentation>
+      <wsdl:input message="tns:CancelOfflineReportSoapIn" />
+      <wsdl:output message="tns:CancelOfflineReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDetailReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Детальный отчет по переводам</wsdl:documentation>
+      <wsdl:input message="tns:TransactionDetailReportSoapIn" />
+      <wsdl:output message="tns:TransactionDetailReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProfixReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Отчет по взаиморасчетам с Профикс</wsdl:documentation>
+      <wsdl:input message="tns:ProfixReportSoapIn" />
+      <wsdl:output message="tns:ProfixReportSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SWWSSoap" type="tns:SWWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CalcComission">
+      <soap:operation soapAction="http://sb.com.ua/webservices/CalcComission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransfer">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRequest">
+      <soap:operation soapAction="http://sb.com.ua/webservices/SendRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirm">
+      <soap:operation soapAction="http://sb.com.ua/webservices/SendConfirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCancel">
+      <soap:operation soapAction="http://sb.com.ua/webservices/SendCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEdit">
+      <soap:operation soapAction="http://sb.com.ua/webservices/SendEdit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayoutRequest">
+      <soap:operation soapAction="http://sb.com.ua/webservices/PayoutRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayoutConfirm">
+      <soap:operation soapAction="http://sb.com.ua/webservices/PayoutConfirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayoutCancel">
+      <soap:operation soapAction="http://sb.com.ua/webservices/PayoutCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnRequest">
+      <soap:operation soapAction="http://sb.com.ua/webservices/ReturnRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnConfirm">
+      <soap:operation soapAction="http://sb.com.ua/webservices/ReturnConfirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnCancel">
+      <soap:operation soapAction="http://sb.com.ua/webservices/ReturnCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindClient">
+      <soap:operation soapAction="http://sb.com.ua/webservices/FindClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmOperation">
+      <soap:operation soapAction="http://sb.com.ua/webservices/ConfirmOperation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByCountry">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetCityByCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencies">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetCurrencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentTypeList">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetDocumentTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetCountries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryOptions">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetDeliveryOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDirections">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetDirections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStates">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetStates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFeatures">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetFeatures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoints">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetPoints" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPointTree">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetPointTree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OWExecOperation">
+      <soap:operation soapAction="http://sb.com.ua/webservices/OWExecOperation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://sb.com.ua/webservices/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormatInfo">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetFormatInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMethodInfo">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetMethodInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecOperation">
+      <soap:operation soapAction="http://sb.com.ua/webservices/ExecOperation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOfPoint">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetUsersOfPoint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://sb.com.ua/webservices/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://sb.com.ua/webservices/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://sb.com.ua/webservices/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPointSW">
+      <soap:operation soapAction="http://sb.com.ua/webservices/AddPointSW" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPointTreeSW">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetPointTreeSW" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOfPointSW">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetUsersOfPointSW" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlinkUser">
+      <soap:operation soapAction="http://sb.com.ua/webservices/UnlinkUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SWReportingInfo">
+      <soap:operation soapAction="http://sb.com.ua/webservices/SWReportingInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SWReportingTransactions">
+      <soap:operation soapAction="http://sb.com.ua/webservices/SWReportingTransactions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateReport">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GenerateReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://sb.com.ua/webservices/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfflineTaskList">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetOfflineTaskList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfflineReport">
+      <soap:operation soapAction="http://sb.com.ua/webservices/GetOfflineReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelOfflineReport">
+      <soap:operation soapAction="http://sb.com.ua/webservices/CancelOfflineReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDetailReport">
+      <soap:operation soapAction="http://sb.com.ua/webservices/TransactionDetailReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProfixReport">
+      <soap:operation soapAction="http://sb.com.ua/webservices/ProfixReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SWWSSoap12" type="tns:SWWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CalcComission">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/CalcComission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransfer">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetTransfer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRequest">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/SendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirm">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/SendConfirm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCancel">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/SendCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEdit">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/SendEdit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayoutRequest">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/PayoutRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayoutConfirm">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/PayoutConfirm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayoutCancel">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/PayoutCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnRequest">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/ReturnRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnConfirm">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/ReturnConfirm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnCancel">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/ReturnCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindClient">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/FindClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmOperation">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/ConfirmOperation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByCountry">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetCityByCountry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencies">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetCurrencies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentTypeList">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetDocumentTypeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetCountries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryOptions">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetDeliveryOptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDirections">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetDirections" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStates">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetStates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFeatures">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetFeatures" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoints">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetPoints" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPointTree">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetPointTree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OWExecOperation">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/OWExecOperation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormatInfo">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetFormatInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMethodInfo">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetMethodInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecOperation">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/ExecOperation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOfPoint">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetUsersOfPoint" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPointSW">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/AddPointSW" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPointTreeSW">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetPointTreeSW" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOfPointSW">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetUsersOfPointSW" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetUserById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlinkUser">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/UnlinkUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SWReportingInfo">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/SWReportingInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SWReportingTransactions">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/SWReportingTransactions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateReport">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GenerateReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfflineTaskList">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetOfflineTaskList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfflineReport">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/GetOfflineReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelOfflineReport">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/CancelOfflineReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDetailReport">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/TransactionDetailReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProfixReport">
+      <soap12:operation soapAction="http://sb.com.ua/webservices/ProfixReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SWWS">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;input type="hidden" name="WS_VERSION" id="WS_VERSION" value="SWI22.1.01.01" /&gt;</wsdl:documentation>
+    <wsdl:port name="SWWSSoap" binding="tns:SWWSSoap">
+      <soap:address location="https://tmgs.mgprofix.com:30921/swws/swws.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SWWSSoap12" binding="tns:SWWSSoap12">
+      <soap12:address location="https://tmgs.mgprofix.com:30921/swws/swws.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
