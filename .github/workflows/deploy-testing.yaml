@@ -1,0 +1,39 @@
+name: Gremit-soap-wrapper-staging-deployment
+on:
+  workflow_dispatch: # Putting here is also fine!!
+  release:
+    types: [created]
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v1
+          with:
+            ref: master
+        - name: Deploy soap wrapper in testing
+          uses: appleboy/ssh-action@master
+          env:
+            PORT: 3002
+            SOAP_ENDPOINT: https://tmgs.mgprofix.com:443/swws/swws.asmx?wsdl
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USERNAME }}
+            key: ${{ secrets.SSH_KEY }}
+            port: ${{ secrets.SSH_PORT }}
+            script_stop: true
+            envs: PORT,SOAP_ENDPOINT
+            script: |
+              rm -rf gremit-soap-rest-wrapper || true
+              git clone https://${{ secrets.GIT_TOKEN }}@github.com/shamonshan/gremit-soap-rest-wrapper.git || true
+              cd gremit-soap-rest-wrapper
+              rm .env || true
+              echo PORT=$PORT >> .env
+              echo SOAP_ENDPOINT=$SOAP_ENDPOINT >> .env
+              sudo npm install
+              npm run prod:delete || true
+              npm run prod
+
+             

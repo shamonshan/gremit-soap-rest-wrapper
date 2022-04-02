@@ -5,6 +5,8 @@
     "main": "index.js",
     "scripts": {
         "dev": "nodemon index.js",
+        "prod": "pm2 start index.js --name gremit-soap-wrapper",
+        "prod:delete": "pm2 stop gremit-soap-wrapper && pm2 delete gremit-soap-wrapper",
         "format": "prettier --write .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -23,6 +25,7 @@
     },
     "devDependencies": {
         "nodemon": "^2.0.15",
+        "pm2": "^5.2.0",
         "prettier": "2.5.1"
     }
 }
