@@ -23,7 +23,7 @@ jobs:
             script_stop: true
             envs: PORT,SOAP_ENDPOINT
             script: |
-              rm -rf gremit-soap-rest-wrapper || true
+              rm -rf gremit-soap-rest-wrapper || true 
               git clone https://${{ secrets.GIT_TOKEN }}@github.com/shamonshan/gremit-soap-rest-wrapper.git || true
               cd gremit-soap-rest-wrapper
               rm .env || true
