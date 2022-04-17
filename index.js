@@ -45,7 +45,7 @@ app.post('/soap-request', upload.fields([]), async (req, res) => {
         var parser = new xml2js.Parser({ explicitArray: false, trim: true })
         parser.parseString(result.data, (err, result) => {
             if (err) {
-                res.json({
+                res.status(400).json({
                     message: 'Error',
                     err: err,
                 })
