@@ -54,7 +54,7 @@ app.post('/soap-request', upload.fields([]), async (req, res) => {
             }
         })
     } catch (err) {
-        console.log(err)
+        res.status(500);
         res.json({
             message: 'Error',
             stack: err.response.data ? err.response.data : 'Unknown error',
